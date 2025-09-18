@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyguol628ducy"]
+
+[ext_resource type="Texture2D" uid="uid://d21goohjfqngx" path="res://resources/graphics/lights/textures/circle.png" id="1_o5q2v"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_i2kpa"]
+polygon = PackedVector2Array(-3, 1, 18, -13, -15, -2, -15, 5, 18, 15)
+
+[node name="Flashlight" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.994382, 0.92039, 0.553954, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("1_o5q2v")
+texture_scale = 2.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(-1, -2)
+occluder = SubResource("OccluderPolygon2D_i2kpa")
