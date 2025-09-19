@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=4 uid="uid://fy4gjd1qdfs7"]
+[gd_scene load_steps=7 format=4 uid="uid://fy4gjd1qdfs7"]
 
-[ext_resource type="TileSet" uid="uid://bckuab5w3csql" path="res://scenes/tilesets/interior_tileset.tres" id="1_d7po0"]
+[ext_resource type="Script" uid="uid://b3jrp0fkwcs07" path="res://scenes/objects/house.gd" id="1_2qw3j"]
+[ext_resource type="TileSet" uid="uid://bckuab5w3csql" path="res://resources/tilesets/interior_tileset.tres" id="1_d7po0"]
 [ext_resource type="PackedScene" uid="uid://kvnn1qqs2ano" path="res://scenes/objects/lights/simple_light.tscn" id="2_gbjef"]
 [ext_resource type="PackedScene" uid="uid://dh7ij0skbx25l" path="res://scenes/objects/lights/wall_lamp.tscn" id="3_2jvsx"]
+[ext_resource type="PackedScene" uid="uid://da27bryvuiysq" path="res://scenes/objects/lights/light_fan_animation.tscn" id="4_toye6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtlar"]
 size = Vector2(4390, 4372)
 
 [node name="House" type="Area2D"]
 collision_layer = 16
+script = ExtResource("1_2qw3j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, -10)
@@ -35,3 +38,16 @@ position = Vector2(1277, -2075)
 [node name="WallLamp" parent="." instance=ExtResource("3_2jvsx")]
 position = Vector2(-2068, -896)
 rotation = -1.5708
+
+[node name="LightFanAnimation" parent="." instance=ExtResource("4_toye6")]
+z_index = 1001
+z_as_relative = false
+position = Vector2(1014, 243)
+
+[node name="LightFanAnimation2" parent="." instance=ExtResource("4_toye6")]
+z_index = 1001
+z_as_relative = false
+position = Vector2(-875, -1129)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -8,7 +8,8 @@ signal grenade(pos: Vector2, angle: float)
 @onready var gun_tip: Marker2D = $GunTip
 @onready var laser_particles: GPUParticles2D = $LaserParticles
 
-@export var speed = 400;
+@export var max_speed = 500;
+var speed = max_speed
 var can_laser: bool = true
 var can_grenade: bool = true
 

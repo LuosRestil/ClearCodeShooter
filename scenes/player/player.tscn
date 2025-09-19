@@ -7,6 +7,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dovo2"]
 radius = 63.0079
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dovo2"]
+polygon = PackedVector2Array(-57, -21, -59, -1, -53, 14, -42, 31, -33, 50, -20, 59, -4, 57, 7, 57, 26, 46, 39, 41, 55, 43, 70, 55, 92, 54, 102, 40, 119, 38, 128, 34, 136, 19, 131, 6, 122, 0, 103, -2, 91, -10, 80, -11, 64, -26, 52, -27, 45, -42, 30, -58, 14, -62, -4, -60, -22, -53, -39, -46, -53, -35)
+
 [sub_resource type="Gradient" id="Gradient_dovo2"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
@@ -26,16 +29,15 @@ scale_max = 7.0
 color = Color(0.121569, 1, 1, 1)
 color_ramp = SubResource("GradientTexture1D_gmlin")
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dovo2"]
-polygon = PackedVector2Array(-57, -21, -59, -1, -53, 14, -42, 31, -33, 50, -20, 59, -4, 57, 7, 57, 26, 46, 39, 41, 55, 43, 70, 55, 92, 54, 102, 40, 119, 38, 128, 34, 136, 19, 131, 6, 122, 0, 103, -2, 91, -10, 80, -11, 64, -26, 52, -27, 45, -42, 30, -58, 14, -62, -4, -60, -22, -53, -39, -46, -53, -35)
-
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 31
 script = ExtResource("1_gmlin")
-speed = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dovo2")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_dovo2")
 
 [node name="PlayerImg" type="Sprite2D" parent="."]
 position = Vector2(37, 0)
@@ -47,7 +49,7 @@ wait_time = 0.3
 one_shot = true
 
 [node name="GrenadeTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 one_shot = true
 
 [node name="GunTip" type="Marker2D" parent="."]
@@ -62,9 +64,6 @@ one_shot = true
 explosiveness = 1.0
 randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_lvxji")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-occluder = SubResource("OccluderPolygon2D_dovo2")
 
 [node name="Flashlight" parent="." instance=ExtResource("3_gmlin")]
 position = Vector2(136, 20)
