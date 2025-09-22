@@ -11,14 +11,23 @@ config_version=5
 [application]
 
 config/name="CCShooter"
-run/main_scene="uid://cdryep8bxxtqr"
+run/main_scene="uid://blnoi0pdbsl4g"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://globals/globals.gd"
+LevelTransition="*res://globals/level_transition.tscn"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[global_group]
+
+ItemContainer=""
 
 [input]
 

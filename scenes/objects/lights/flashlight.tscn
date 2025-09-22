@@ -9,10 +9,10 @@ polygon = PackedVector2Array(-3, 1, 18, -13, -15, -2, -15, 5, 18, 15)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.994382, 0.92039, 0.553954, 1)
-energy = 2.0
+energy = 2.5
 shadow_enabled = true
 texture = ExtResource("1_o5q2v")
-texture_scale = 2.0
+texture_scale = 2.5
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(-1, -2)

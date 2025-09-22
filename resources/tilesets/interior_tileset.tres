@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=31 format=3 uid="uid://bckuab5w3csql"]
 
-[ext_resource type="Texture2D" uid="uid://c7hbiadmwx0xi" path="res://resources/graphics/tilesets/interior.png" id="1_orjqj"]
+[ext_resource type="Texture2D" uid="uid://c7hbiadmwx0xi" path="res://resources/graphics/tilesets/interior.png" id="1_3exew"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_orjqj"]
 polygon = PackedVector2Array(-195, -20.8087, 195, -20.8087, 195, 20.3303, -195, 19.3736)
@@ -88,7 +88,7 @@ polygon = PackedVector2Array(-18.4266, -20.2869, -195, -19.8519, -195, 20.8087, 
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bnf17"]
 resource_name = "interior"
-texture = ExtResource("1_orjqj")
+texture = ExtResource("1_3exew")
 texture_region_size = Vector2i(390, 390)
 0:0/0 = 0
 1:0/0 = 0
@@ -167,7 +167,7 @@ texture_region_size = Vector2i(390, 390)
 1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(20.5502, 22.207, 20.1432, 195, -20.957, 195, -20.957, 21.7058, -195, 22.2429, -195, -20.957, -19.8015, -20.7742, 7.52826, -20.6152, 14.0392, -13.6973, 19.3293, -6.37254, 20.1432, 4.61464)
 2:7/0 = 0
 2:7/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_7oteb")
-2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(195, 22.1779, 20.5502, 22.207, 20.1432, 195, -18.9224, 195, -20.1432, 21.7058, -195, 22.2429, -195, -20.957, -19.8015, -20.7742, -20.6152, -195, 20.8919, -195, 20.892, -20.5501, 195, -20.5501)
+2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(195, 22.1779, 20.5502, 22.207, 20.1432, 195, -18.9224, 195, -20.1432, 21.7058, -195, 22.2429, -195, -20.957, -19.8015, -20.7742, 20.892, -20.5501, 195, -20.5501)
 3:7/0 = 0
 3:7/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_jyhh0")
 3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(22.1779, -195, 22.2429, 195, -20.957, 195, -20.7742, 19.8015, -195, 20.6152, -195, -20.8919, -20.5501, -20.892, -20.5501, -195)

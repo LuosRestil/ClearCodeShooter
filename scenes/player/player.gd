@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 signal laser(pos: Vector2, angle: float)
 signal grenade(pos: Vector2, angle: float)
@@ -8,13 +8,13 @@ signal grenade(pos: Vector2, angle: float)
 @onready var gun_tip: Marker2D = $GunTip
 @onready var laser_particles: GPUParticles2D = $LaserParticles
 
-@export var max_speed = 500;
-var speed = max_speed
+@export var max_speed: float = 500;
+var speed: float
 var can_laser: bool = true
 var can_grenade: bool = true
 
 func _ready() -> void:
-	pass
+	speed = max_speed
 	
 func _process(_delta: float) -> void:
 	var dir = Input.get_vector("left", "right", "up", "down")
@@ -22,21 +22,27 @@ func _process(_delta: float) -> void:
 	look_at(get_global_mouse_position())
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("primary_action") and can_laser:
+	if (
+		Input.is_action_just_pressed("primary_action") and 
+		can_laser and 
+		Globals.laser_count > 0
+	):
 		can_laser = false
 		laser_timer.start()
 		laser.emit(gun_tip.global_position, rotation)
 		laser_particles.emitting = true;
 		
-	if Input.is_action_just_pressed("secondary_action") and can_grenade:
+	if (
+		Input.is_action_just_pressed("secondary_action") and 
+		can_grenade and 
+		Globals.grenade_count > 0
+	):
 		grenade_timer.start()
 		can_grenade = false
 		grenade.emit(gun_tip.global_position, rotation)
 
-
 func _on_laser_timer_timeout() -> void:
 	can_laser = true
-
 
 func _on_grenade_timer_timeout() -> void:
 	can_grenade = true
