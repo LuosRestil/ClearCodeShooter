@@ -19,10 +19,4 @@ position = Vector2(0, 46)
 texture = ExtResource("4_bv720")
 
 [node name="Marker2D" type="Marker2D" parent="SpawnPoints" index="0"]
-position = Vector2(-41, -1)
-
-[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" index="1"]
-position = Vector2(50, -1)
-
-[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" index="2"]
-position = Vector2(0, 57)
+position = Vector2(0, 22)

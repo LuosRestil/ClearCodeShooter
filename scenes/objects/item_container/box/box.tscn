@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://xgttq1q351vk" path="res://resources/graphics/objects/box/lid.png" id="4_1ftnd"]
 
 [node name="Box" instance=ExtResource("1_npm6p")]
+light_mask = 2
+visibility_layer = 2
 script = ExtResource("2_2wfor")
 
 [node name="CollisionPolygon2D" parent="." index="0"]

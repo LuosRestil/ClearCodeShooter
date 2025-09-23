@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2gschcd6i6ee"]
+[gd_scene load_steps=7 format=3 uid="uid://c2gschcd6i6ee"]
 
 [ext_resource type="Texture2D" uid="uid://duwagy5gipet0" path="res://resources/graphics/player/player.png" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://du75imutbisiu" path="res://scenes/player/player.gd" id="1_gmlin"]
 [ext_resource type="PackedScene" uid="uid://cyguol628ducy" path="res://scenes/objects/lights/flashlight.tscn" id="3_gmlin"]
+[ext_resource type="PackedScene" uid="uid://bphhncy6ap4o4" path="res://scenes/particles/laser_particles.tscn" id="3_lvxji"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dovo2"]
 radius = 63.0079
@@ -10,26 +11,7 @@ radius = 63.0079
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dovo2"]
 polygon = PackedVector2Array(-57, -21, -59, -1, -53, 14, -42, 31, -33, 50, -20, 59, -4, 57, 7, 57, 26, 46, 39, 41, 55, 43, 70, 55, 92, 54, 102, 40, 119, 38, 128, 34, 136, 19, 131, 6, 122, 0, 103, -2, 91, -10, 80, -11, 64, -26, 52, -27, 45, -42, 30, -58, 14, -62, -4, -60, -22, -53, -39, -46, -53, -35)
 
-[sub_resource type="Gradient" id="Gradient_dovo2"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_gmlin"]
-gradient = SubResource("Gradient_dovo2")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lvxji"]
-lifetime_randomness = 0.5
-particle_flag_disable_z = true
-inherit_velocity_ratio = -0.38
-spread = 79.639
-initial_velocity_min = 493.47
-initial_velocity_max = 890.86
-gravity = Vector3(0, 0, 0)
-scale_min = 3.0
-scale_max = 7.0
-color = Color(0.121569, 1, 1, 1)
-color_ramp = SubResource("GradientTexture1D_gmlin")
-
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Entity"]]
 collision_mask = 31
 script = ExtResource("1_gmlin")
 
@@ -55,15 +37,8 @@ one_shot = true
 [node name="GunTip" type="Marker2D" parent="."]
 position = Vector2(133, 20)
 
-[node name="LaserParticles" type="GPUParticles2D" parent="."]
+[node name="LaserParticles" parent="." instance=ExtResource("3_lvxji")]
 position = Vector2(134, 20)
-emitting = false
-amount = 20
-lifetime = 0.2
-one_shot = true
-explosiveness = 1.0
-randomness = 0.5
-process_material = SubResource("ParticleProcessMaterial_lvxji")
 
 [node name="Flashlight" parent="." instance=ExtResource("3_gmlin")]
 position = Vector2(136, 20)

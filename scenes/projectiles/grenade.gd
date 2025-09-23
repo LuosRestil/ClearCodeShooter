@@ -3,6 +3,17 @@ extends RigidBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var speed = 2000
+@export var blast_radius = 400
+
+var exploding := false
 
 func explode():
+	freeze = true
 	animation_player.play("explode")
+	exploding = true
+
+func _process(_delta: float):
+	if not exploding: return
+	for scene in get_tree().get_nodes_in_group("ItemContainer") + get_tree().get_nodes_in_group("Entity"):
+		var dist = scene.global_position.distance_to(global_position)
+		if dist <= blast_radius: scene.take_hit()

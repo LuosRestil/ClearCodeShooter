@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://blnoi0pdbsl4g"]
+[gd_scene load_steps=19 format=4 uid="uid://blnoi0pdbsl4g"]
 
 [ext_resource type="PackedScene" uid="uid://cdryep8bxxtqr" path="res://scenes/levels/level.tscn" id="1_2s4ok"]
 [ext_resource type="Texture2D" uid="uid://dc07sl0pgmtvc" path="res://resources/graphics/tilesets/outside_walls.png" id="2_qvsb0"]
@@ -14,8 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://csgqcmlmu5x02" path="res://scenes/objects/gate/gate.tscn" id="11_6u4a0"]
 [ext_resource type="PackedScene" uid="uid://fy4gjd1qdfs7" path="res://scenes/objects/house.tscn" id="12_oe17f"]
 [ext_resource type="PackedScene" uid="uid://fya8po0ufyfb" path="res://scenes/objects/steam_vent/steam_vent.tscn" id="13_lbwx5"]
-[ext_resource type="PackedScene" uid="uid://bjrq7di3umxqc" path="res://scenes/objects/item_container/box/box.tscn" id="15_x30qc"]
-[ext_resource type="PackedScene" uid="uid://dl8le5vtrh7e8" path="res://scenes/objects/item_container/toilet/toilet.tscn" id="16_uaeil"]
+[ext_resource type="PackedScene" uid="uid://buefu2vp556ow" path="res://scenes/enemies/scout/scout.tscn" id="15_ex6t8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ddemh"]
 resource_name = "walls"
@@ -132,11 +131,8 @@ scale = Vector2(0.7, 0.7)
 [node name="SteamVent" parent="Environment" index="4" instance=ExtResource("13_lbwx5")]
 position = Vector2(1759, 570)
 
-[node name="Box" parent="." index="4" instance=ExtResource("15_x30qc")]
-position = Vector2(426, 678)
-
-[node name="Toilet" parent="." index="5" instance=ExtResource("16_uaeil")]
-position = Vector2(1447, 681)
+[node name="Scout" parent="Enemies" index="0" instance=ExtResource("15_ex6t8")]
+position = Vector2(1361, 787)
 
 [connection signal="entered" from="Environment/Gate" to="." method="_on_gate_entered"]
 [connection signal="player_entered" from="Environment/House" to="." method="_on_house_player_entered"]

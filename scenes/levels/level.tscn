@@ -26,5 +26,7 @@ z_index = -1000
 
 [node name="Items" type="Node2D" parent="."]
 
+[node name="Enemies" type="Node2D" parent="."]
+
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]

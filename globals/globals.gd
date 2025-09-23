@@ -17,3 +17,5 @@ var player_health = 50:
 	set(val):
 		player_health = min(player_max_health, val)
 		player_stat_update.emit()
+		
+var player_position: Vector2

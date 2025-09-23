@@ -3,15 +3,17 @@ class_name ItemContainer extends StaticBody2D
 signal open(pos: Vector2, dir: Vector2)
 
 @onready var lid: Sprite2D = $Lid
-@onready var dir = Vector2.DOWN.rotated(rotation)
+@onready var dir := Vector2.DOWN.rotated(rotation)
 @onready var spawn_points: Node2D = $SpawnPoints
 
 var is_open := false
+var num_items := 1
 
 func take_hit() -> void:
 	if is_open: return
 	lid.hide()
-	open.emit(get_random_spawn_point(), dir)
+	for i in range(num_items):
+		open.emit(get_random_spawn_point(), dir)
 	is_open = true
 	
 	

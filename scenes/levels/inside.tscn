@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dy705hwiox15k"]
+[gd_scene load_steps=11 format=4 uid="uid://dy705hwiox15k"]
 
 [ext_resource type="PackedScene" uid="uid://cdryep8bxxtqr" path="res://scenes/levels/level.tscn" id="1_8ht0b"]
 [ext_resource type="TileSet" uid="uid://bckuab5w3csql" path="res://resources/tilesets/interior_tileset.tres" id="2_b1uqu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://kvnn1qqs2ano" path="res://scenes/objects/lights/simple_light.tscn" id="4_xanyd"]
 [ext_resource type="PackedScene" uid="uid://dh7ij0skbx25l" path="res://scenes/objects/lights/wall_lamp.tscn" id="5_j5d1l"]
 [ext_resource type="PackedScene" uid="uid://ck62m72xpa47m" path="res://scenes/items/item.tscn" id="8_6serm"]
+[ext_resource type="PackedScene" uid="uid://bjrq7di3umxqc" path="res://scenes/objects/item_container/box/box.tscn" id="8_x0st6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5d1l"]
 size = Vector2(751, 257)
@@ -132,6 +133,16 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(1751, 528)
 rotation = 3.14159
 scale = Vector2(0.5, 0.5)
+
+[node name="Box" parent="Environment" index="28" instance=ExtResource("8_x0st6")]
+position = Vector2(4, -1579)
+
+[node name="Box2" parent="Environment" index="29" instance=ExtResource("8_x0st6")]
+position = Vector2(1613, 718)
+
+[node name="Box3" parent="Environment" index="30" instance=ExtResource("8_x0st6")]
+position = Vector2(-3163, 1896)
+rotation = -1.57079
 
 [node name="ExitArea" type="Area2D" parent="." index="3"]
 position = Vector2(1557, 3307)

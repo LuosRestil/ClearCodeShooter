@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://buefu2vp556ow"]
+
+[ext_resource type="Texture2D" uid="uid://rbmycd10shb2" path="res://resources/graphics/enemies/scout.png" id="1_fm4ws"]
+[ext_resource type="Script" uid="uid://blf5sdmd284r2" path="res://scenes/enemies/scout/scout.gd" id="1_gbgau"]
+[ext_resource type="PackedScene" uid="uid://bphhncy6ap4o4" path="res://scenes/particles/laser_particles.tscn" id="3_s8ftv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fm4ws"]
+radius = 51.0098
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbgau"]
+radius = 1552.01
+
+[node name="Scout" type="CharacterBody2D" groups=["Entity", "Scouts"]]
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_gbgau")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_fm4ws")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(40, 26)
+rotation = 1.5708
+texture = ExtResource("1_fm4ws")
+
+[node name="LaserCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="LaserSpawnPt1" type="Marker2D" parent="."]
+position = Vector2(122, -27)
+
+[node name="LaserSpawnPt2" type="Marker2D" parent="."]
+position = Vector2(131, 12)
+
+[node name="PlayerDetectZone" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectZone"]
+shape = SubResource("CircleShape2D_gbgau")
+debug_color = Color(0.980627, 0, 0.378061, 0.42)
+
+[node name="LaserParticles1" parent="." instance=ExtResource("3_s8ftv")]
+position = Vector2(124, -27)
+
+[node name="LaserParticles2" parent="." instance=ExtResource("3_s8ftv")]
+position = Vector2(134, 13)
+
+[connection signal="timeout" from="LaserCooldown" to="." method="_on_laser_cooldown_timeout"]
+[connection signal="body_entered" from="PlayerDetectZone" to="." method="_on_player_detect_zone_body_entered"]
+[connection signal="body_exited" from="PlayerDetectZone" to="." method="_on_player_detect_zone_body_exited"]

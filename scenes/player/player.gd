@@ -21,6 +21,7 @@ func _process(_delta: float) -> void:
 	velocity = speed * dir
 	look_at(get_global_mouse_position())
 	move_and_slide()
+	Globals.player_position = global_position
 	
 	if (
 		Input.is_action_just_pressed("primary_action") and 
@@ -46,3 +47,6 @@ func _on_laser_timer_timeout() -> void:
 
 func _on_grenade_timer_timeout() -> void:
 	can_grenade = true
+	
+func take_hit():
+	Globals.player_health -= 10
