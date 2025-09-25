@@ -7,11 +7,14 @@ signal grenade(pos: Vector2, angle: float)
 @onready var grenade_timer: Timer = $GrenadeTimer
 @onready var gun_tip: Marker2D = $GunTip
 @onready var laser_particles: GPUParticles2D = $LaserParticles
+@onready var damage_cooldown: Timer = $DamageCooldown
+@onready var sprite: Sprite2D = $PlayerImg
 
 @export var max_speed: float = 500;
 var speed: float
 var can_laser: bool = true
 var can_grenade: bool = true
+var damageable: bool = true
 
 func _ready() -> void:
 	speed = max_speed
@@ -49,4 +52,12 @@ func _on_grenade_timer_timeout() -> void:
 	can_grenade = true
 	
 func take_hit():
+	if not damageable: return
+	damageable = false
 	Globals.player_health -= 10
+	sprite.material.set_shader_parameter("amount", 1)
+	damage_cooldown.start()
+
+func _on_damage_cooldown_timeout() -> void:
+	damageable = true
+	sprite.material.set_shader_parameter("amount", 0)

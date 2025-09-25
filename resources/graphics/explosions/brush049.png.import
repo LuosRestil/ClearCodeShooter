@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8eoktr286wy7"
-path="res://.godot/imported/brush047.png-951242d5eb196a910d1f72b94e552c75.ctex"
+uid="uid://13wtoh4ngtun"
+path="res://.godot/imported/brush049.png-ff333285a0b6339f9d415c5cf81c0f8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/graphics/decals/brushes/brush047.png"
-dest_files=["res://.godot/imported/brush047.png-951242d5eb196a910d1f72b94e552c75.ctex"]
+source_file="res://resources/graphics/explosions/brush049.png"
+dest_files=["res://.godot/imported/brush049.png-ff333285a0b6339f9d415c5cf81c0f8d.ctex"]
 
 [params]
 
