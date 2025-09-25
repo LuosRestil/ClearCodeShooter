@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var damage_cooldown: Timer = $DamageCooldown
 @onready var sprite: Sprite2D = $DroneImg
+@onready var animation: AnimationPlayer = $AnimationPlayer
 
 @export var base_speed := 200.0
 @export var accel := 100
@@ -15,6 +16,7 @@ func _ready() -> void:
 	speed = base_speed
 
 func _process(delta: float) -> void:
+	if animation.is_playing(): return
 	if player_in_range:
 		look_at(Globals.player_position)
 		speed += accel * delta
@@ -24,7 +26,7 @@ func _process(delta: float) -> void:
 			explode()
 			
 func explode():
-	queue_free()
+	animation.play("explosion")
 		
 func take_hit() -> void:
 	if not damageable: return
@@ -33,7 +35,7 @@ func take_hit() -> void:
 	sprite.material.set_shader_parameter("amount", 1)
 	health -= 10
 	if health <= 0:
-		queue_free()
+		explode()
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	player_in_range = true

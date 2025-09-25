@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b15jb5b3sd68l"]
+[gd_scene load_steps=11 format=3 uid="uid://b15jb5b3sd68l"]
 
 [ext_resource type="Script" uid="uid://dlqtqdb3ti3qv" path="res://scenes/enemies/drone/drone.gd" id="1_ws74u"]
 [ext_resource type="Texture2D" uid="uid://cekls74f6e8qo" path="res://resources/graphics/enemies/drone.png" id="2_361hk"]
 [ext_resource type="Shader" uid="uid://cpk2e31vwbj30" path="res://resources/shaders/white.gdshader" id="2_h86h0"]
+[ext_resource type="Texture2D" uid="uid://cj06unyvfwhuu" path="res://resources/graphics/explosions/explosion_3.png" id="4_wswgn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_22it8"]
 radius = 70.0
@@ -14,6 +15,105 @@ radius = 1007.45
 shader = ExtResource("2_h86h0")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/amount = 0.0
+
+[sub_resource type="Animation" id="Animation_wswgn"]
+resource_name = "explosion"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DroneImg:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_iehpf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [26]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DroneImg:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v1aj2"]
+_data = {
+&"RESET": SubResource("Animation_iehpf"),
+&"explosion": SubResource("Animation_wswgn")
+}
 
 [node name="Drone" type="CharacterBody2D" groups=["Entity"]]
 collision_layer = 2
@@ -38,6 +138,18 @@ texture = ExtResource("2_361hk")
 [node name="DamageCooldown" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="Explosion" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_wswgn")
+hframes = 8
+vframes = 8
+frame = 26
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v1aj2")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
