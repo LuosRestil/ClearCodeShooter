@@ -71,4 +71,6 @@ func take_hit():
 	hit_particles.emitting = true
 	health -= 10
 	if health <= 0:
+		#sprite.visible = false
+		await get_tree().create_timer(0.3).timeout
 		queue_free()
