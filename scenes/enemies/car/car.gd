@@ -42,7 +42,7 @@ func take_hit():
 		queue_free()
 		
 func fire():
-	Globals.player_health -= 20
+	Globals.player.take_hit()
 	gunfire.modulate = Color.WHITE
 	gunfire_2.modulate = Color.WHITE
 	var tween = create_tween().set_parallel(true)
@@ -52,6 +52,7 @@ func fire():
 
 func _on_damage_cooldown_timeout() -> void:
 	damageable = true
+	sprite.material.set_shader_parameter("amount", 0)
 
 func _on_notice_area_body_entered(_body: Node2D) -> void:
 	player_in_range = true
@@ -65,3 +66,7 @@ func _on_notice_area_body_exited(_body: Node2D) -> void:
 	tween.tween_property(line_2, "width", 0, 0.3)
 	await tween.finished
 	animation_player.stop()
+
+
+func _on_character_body_2d_took_hit() -> void:
+	take_hit()

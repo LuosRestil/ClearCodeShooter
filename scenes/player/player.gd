@@ -18,6 +18,7 @@ var damageable: bool = true
 
 func _ready() -> void:
 	speed = max_speed
+	Globals.player = self
 	
 func _process(_delta: float) -> void:
 	var dir = Input.get_vector("left", "right", "up", "down")

@@ -19,3 +19,4 @@ var player_health = 50:
 		player_stat_update.emit()
 		
 var player_position: Vector2
+var player: Player

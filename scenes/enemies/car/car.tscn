@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dokb7g6g3a6qy"]
+[gd_scene load_steps=13 format=3 uid="uid://dokb7g6g3a6qy"]
 
 [ext_resource type="Texture2D" uid="uid://biedq7a70uiw8" path="res://resources/graphics/car/main.png" id="1_mbatb"]
 [ext_resource type="Script" uid="uid://cb4rowlv8di47" path="res://scenes/enemies/car/car.gd" id="1_pkd8r"]
+[ext_resource type="Script" uid="uid://c6fptrqi4xbn4" path="res://scenes/enemies/car/car_body.gd" id="2_wpjgg"]
 [ext_resource type="Texture2D" uid="uid://mrag3u0h0peg" path="res://resources/graphics/car/turret.png" id="3_f7cqd"]
+[ext_resource type="Shader" uid="uid://cpk2e31vwbj30" path="res://resources/shaders/white.gdshader" id="3_sqlvx"]
 [ext_resource type="Texture2D" uid="uid://memf54ahbina" path="res://resources/graphics/explosions/gun.png" id="4_7jf8d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7cqd"]
@@ -10,6 +12,38 @@ radius = 681.073
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkd8r"]
 size = Vector2(399.5, 256)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q85gn"]
+shader = ExtResource("3_sqlvx")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/amount = 0.0
+
+[sub_resource type="Animation" id="Animation_7jf8d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret/RayCast2D/Line2D:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turret/RayCast2D2/Line2D2:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_f7cqd"]
 resource_name = "laser_load"
@@ -54,33 +88,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_7jf8d"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Turret/RayCast2D/Line2D:width")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Turret/RayCast2D2/Line2D2:width")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wpjgg"]
 _data = {
 &"RESET": SubResource("Animation_7jf8d"),
@@ -100,11 +107,13 @@ debug_color = Color(0.968416, 0.131352, 0.310305, 0.42)
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 collision_layer = 2
 collision_mask = 15
+script = ExtResource("2_wpjgg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_pkd8r")
 
 [node name="CarSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_q85gn")
 position = Vector2(29, 1)
 rotation = 1.5708
 texture = ExtResource("1_mbatb")
@@ -158,4 +167,5 @@ libraries = {
 
 [connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]
+[connection signal="took_hit" from="CharacterBody2D" to="." method="_on_character_body_2d_took_hit"]
 [connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]
