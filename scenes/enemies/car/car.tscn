@@ -131,6 +131,7 @@ texture = ExtResource("3_f7cqd")
 [node name="RayCast2D" type="RayCast2D" parent="Turret"]
 position = Vector2(112, -26)
 target_position = Vector2(575, 0)
+collision_mask = 7
 
 [node name="Line2D" type="Line2D" parent="Turret/RayCast2D"]
 points = PackedVector2Array(0, 0)
@@ -140,6 +141,7 @@ default_color = Color(0.940622, 0.192806, 0.266145, 1)
 [node name="RayCast2D2" type="RayCast2D" parent="Turret"]
 position = Vector2(112, 30)
 target_position = Vector2(575, 0)
+collision_mask = 7
 
 [node name="Line2D2" type="Line2D" parent="Turret/RayCast2D2"]
 points = PackedVector2Array(0, 0)

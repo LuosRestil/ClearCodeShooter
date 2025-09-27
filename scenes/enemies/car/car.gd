@@ -42,7 +42,8 @@ func take_hit():
 		queue_free()
 		
 func fire():
-	Globals.player.take_hit()
+	if ray_cast_1.get_collider() is Player or ray_cast_2.get_collider() is Player:
+		Globals.player.take_hit()
 	gunfire.modulate = Color.WHITE
 	gunfire_2.modulate = Color.WHITE
 	var tween = create_tween().set_parallel(true)

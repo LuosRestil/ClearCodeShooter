@@ -24,15 +24,25 @@ resource_name = "walls"
 texture = ExtResource("2_qvsb0")
 texture_region_size = Vector2i(390, 390)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-66.4864, -65.4519, 51.5952, -64.8386, 51.5952, -58.7056, 195, -60.8693, 195, 59.1359, 53.386, 59.0163, 53.1815, 63.7183, -66.5845, 62.0991)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-195, -59.2287, 195, -60.1975, 195, 59.8613, -195, 58.1288)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(66.4864, -65.4519, -51.5952, -64.8386, -51.5952, -58.7056, -195, -60.8693, -195, 59.1359, -53.386, 59.0163, -53.1815, 63.7183, 66.5845, 62.0991)
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-59.2287, 195, -58.4624, -63.9103, 61.1939, -62.8274, 56.1189, 195)
 1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-59.4353, -64.7419, 56.8638, -64.555, 58.4211, -57.8067, 195, -60.1975, 195, 59.8613, 60.4767, 57.7656, 59.4385, 195, -58.9162, 195)
 2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(61.4527, -63.8075, -56.3829, -64.8457, -58.4211, -57.8067, -195, -60.1975, -195, 59.8613, -60.4767, 57.7656, -59.4385, 195, 58.9162, 195)
 0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-59.2287, 195, -60.1975, -195, 59.8613, -195, 58.1288, 195)
 1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-62.093, 62.8528, 56.2617, 61.8146, 58.4211, 57.8067, 195, 60.1975, 195, -59.8613, 60.4767, -57.7656, 59.4385, -195, -58.9162, -195)
 2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(62.093, 62.8528, -56.2617, 61.8146, -58.4211, 57.8067, -195, 60.1975, -195, -59.8613, -60.4767, -57.7656, -59.4385, -195, 58.9162, -195)
 0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-60.4332, 44.3543, -60.4332, -80.7162, -58.7056, -51.5952, -60.8693, -195, 59.1359, -195, 60.3059, -76.3848, 63.7183, -53.1815, 59.223, 44.3543)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vkmey"]
 texture = ExtResource("3_xqqjy")
@@ -49,6 +59,8 @@ texture_region_size = Vector2i(390, 390)
 
 [sub_resource type="TileSet" id="TileSet_2ngmq"]
 tile_size = Vector2i(390, 390)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 11
 sources/0 = SubResource("TileSetAtlasSource_ddemh")
 sources/2 = SubResource("TileSetAtlasSource_vkmey")
 
@@ -70,7 +82,7 @@ rotation = 1.52796
 [node name="Walls" type="TileMapLayer" parent="Environment/TileMapLayers" index="0"]
 z_index = 2
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD7/wAAAAABAAAAAAD8/wAAAAABAAAAAAD9/wAAAAABAAAAAAD+/wAAAAACAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAACAAAAAAD5/wAAAAAAAAAAAAD4//7/AgAAAAAAAAD4////AgAAAAEAAAD4/wAAAgAAAAEAAAD4/wEAAgAAAAIAAAD5/wEAAgABAAIAAAD6/wEAAgABAAEAAAD6/wIAAgAAAAIAAAD7/wIAAgABAAIAAAD8/wIAAgABAAEAAAD8/wMAAgAAAAIAAAD9/wMAAgACAAIAAAD9/wIAAgACAAEAAAD9/wEAAgACAAEAAAD9////AgACAAAAAAD8//7/AgACAAAAAAD5//7/AgABAAAAAAD6//7/AgABAAAAAAD7//7/AgABAAAAAAD8////AgABAAEAAAD7////AgABAAEAAAD6////AgABAAEAAAD5////AgABAAEAAAD6/wAAAAABAAAAAAD8/wEAAgABAAEAAAD7/wEAAgABAAEAAAA=")
+tile_map_data = PackedByteArray("AAD7/wAAAAABAAAAAAD8/wAAAAABAAAAAAD9/wAAAAABAAAAAAD+/wAAAAACAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAACAAEAAAD5/wAAAAAAAAAAAAD4//7/AgAAAAAAAAD4////AgAAAAEAAAD4/wAAAgAAAAEAAAD4/wEAAgAAAAIAAAD5/wEAAgABAAIAAAD6/wEAAgABAAEAAAD6/wIAAgAAAAIAAAD7/wIAAgABAAIAAAD8/wIAAgABAAEAAAD8/wMAAgAAAAIAAAD9/wMAAgACAAIAAAD9/wIAAgACAAEAAAD9/wEAAgACAAEAAAD9////AgACAAAAAAD8//7/AgACAAAAAAD5//7/AgABAAAAAAD6//7/AgABAAAAAAD7//7/AgABAAAAAAD8////AgABAAEAAAD7////AgABAAEAAAD6////AgABAAEAAAD5////AgABAAEAAAD6/wAAAAABAAAAAAD8/wEAAgABAAEAAAD7/wEAAgABAAEAAAAJAAEAAAAAAAIAAAAJAAIAAAAAAAIAAAAJAAMAAAAAAAIAAAAJAAQAAAABAAIAAAAKAAQAAAABAAAAAAALAAQAAAABAAAAAAAMAAQAAAACAAEAAAAMAAUAAAAAAAIAAAAMAAYAAAAAAAIAAAAMAAcAAAACAAIAAAALAAcAAAABAAAAAAAKAAcAAAABAAAAAAAJAAcAAAABAAAAAAAFAAQAAAAAAAEAAAAFAAUAAAAAAAIAAAAFAAYAAAAAAAIAAAAFAAcAAAAAAAIAAAAFAAgAAAAAAAMAAAAIAAQAAAAAAAEAAAAIAAUAAAAAAAIAAAAIAAYAAAAAAAMAAAAIAAcAAAABAAEAAAAIAAgAAAABAAIAAAAJAAgAAAABAAAAAAAKAAgAAAABAAAAAAALAAgAAAACAAEAAAABAAkAAAAAAAAAAAACAAkAAAABAAAAAAADAAkAAAABAAAAAAAEAAkAAAABAAAAAAAFAAkAAAABAAAAAAAGAAkAAAACAAAAAAAGAAcAAAAAAAEAAAAGAAgAAAAAAAMAAAA=")
 tile_set = SubResource("TileSet_2ngmq")
 
 [node name="Ground" type="TileMapLayer" parent="Environment/TileMapLayers" index="1"]
@@ -149,10 +161,10 @@ position = Vector2(-327, 1106)
 [node name="Drone" parent="Enemies" index="2" instance=ExtResource("17_uaeil")]
 position = Vector2(1270, 2932)
 
-[node name="CarPath" type="Path2D" parent="." index="6"]
+[node name="CarPath" type="Path2D" parent="Enemies" index="3"]
 curve = SubResource("Curve2D_uaeil")
 
-[node name="Car" parent="CarPath" index="0" instance=ExtResource("18_bjulg")]
+[node name="Car" parent="Enemies/CarPath" index="0" instance=ExtResource("18_bjulg")]
 position = Vector2(922, 801)
 rotation = 0.399827
 
