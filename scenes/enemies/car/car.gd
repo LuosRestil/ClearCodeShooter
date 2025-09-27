@@ -6,7 +6,7 @@ extends PathFollow2D
 @onready var ray_cast_1: RayCast2D = $Turret/RayCast2D
 @onready var ray_cast_2: RayCast2D = $Turret/RayCast2D2
 @onready var line_1: Line2D = $Turret/RayCast2D/Line2D
-@onready var line_2: Line2D = $Turret/RayCast2D2/Line2D
+@onready var line_2: Line2D = $Turret/RayCast2D2/Line2D2
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var gunfire: Sprite2D = $Turret/Gunfire
 @onready var gunfire_2: Sprite2D = $Turret/Gunfire2
@@ -25,7 +25,12 @@ func _process(delta: float) -> void:
 	progress_ratio += speed * delta
 	if not player_in_range: return
 	turret.look_at(Globals.player_position)
-	# set end of line to raycast collision point
+	if ray_cast_1.is_colliding():
+		var dist = ray_cast_1.global_position.distance_to(ray_cast_1.get_collision_point())
+		line_1.points[1] = Vector2(dist, 0)
+	if ray_cast_2.is_colliding():
+		var dist = ray_cast_2.global_position.distance_to(ray_cast_2.get_collision_point())
+		line_2.points[1] = Vector2(dist, 0)
 
 func take_hit():
 	if not damageable: return

@@ -30,7 +30,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Turret/RayCast2D2/Line2D:width")
+tracks/1/path = NodePath("Turret/RayCast2D2/Line2D2:width")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -71,7 +71,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Turret/RayCast2D2/Line2D:width")
+tracks/1/path = NodePath("Turret/RayCast2D2/Line2D2:width")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -132,7 +132,7 @@ default_color = Color(0.940622, 0.192806, 0.266145, 1)
 position = Vector2(112, 30)
 target_position = Vector2(575, 0)
 
-[node name="Line2D" type="Line2D" parent="Turret/RayCast2D2"]
+[node name="Line2D2" type="Line2D" parent="Turret/RayCast2D2"]
 points = PackedVector2Array(0, 0)
 width = 0.0
 default_color = Color(0.941176, 0.192157, 0.266667, 1)
