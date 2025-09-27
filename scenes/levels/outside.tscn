@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://blnoi0pdbsl4g"]
+[gd_scene load_steps=23 format=4 uid="uid://blnoi0pdbsl4g"]
 
 [ext_resource type="PackedScene" uid="uid://cdryep8bxxtqr" path="res://scenes/levels/level.tscn" id="1_2s4ok"]
 [ext_resource type="Texture2D" uid="uid://dc07sl0pgmtvc" path="res://resources/graphics/tilesets/outside_walls.png" id="2_qvsb0"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://buefu2vp556ow" path="res://scenes/enemies/scout/scout.tscn" id="15_ex6t8"]
 [ext_resource type="PackedScene" uid="uid://lpgr126s7vum" path="res://scenes/enemies/bug/bug.tscn" id="16_x30qc"]
 [ext_resource type="PackedScene" uid="uid://b15jb5b3sd68l" path="res://scenes/enemies/drone/drone.tscn" id="17_uaeil"]
+[ext_resource type="PackedScene" uid="uid://dokb7g6g3a6qy" path="res://scenes/enemies/car/car.tscn" id="18_bjulg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ddemh"]
 resource_name = "walls"
@@ -50,6 +51,12 @@ texture_region_size = Vector2i(390, 390)
 tile_size = Vector2i(390, 390)
 sources/0 = SubResource("TileSetAtlasSource_ddemh")
 sources/2 = SubResource("TileSetAtlasSource_vkmey")
+
+[sub_resource type="Curve2D" id="Curve2D_uaeil"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 922, 801, -234.865, -738.967, 234.865, 738.967, 2737, 1568, 40.099, -590.028, -40.099, 590.028, 2921, 3012, 355.162, -532.743, -355.162, 532.743, 2583, 4496, 1346.18, -504.101, -1346.18, 504.101, 400, 5206, 1592.5, 716.053, -1592.5, -716.053, -3077, 5909, 853.535, 1277.44, -853.535, -1277.44, -4549, 3750, -813.436, 1013.93, 813.436, -1013.93, -4326, 1516, -910.819, -366.619, 910.819, 366.619, -2051, 960, 0, 0, 0, 0, 922, 801)
+}
+point_count = 10
 
 [node name="Outside" instance=ExtResource("1_2s4ok")]
 script = ExtResource("2_xqqjy")
@@ -141,6 +148,13 @@ position = Vector2(-327, 1106)
 
 [node name="Drone" parent="Enemies" index="2" instance=ExtResource("17_uaeil")]
 position = Vector2(1270, 2932)
+
+[node name="CarPath" type="Path2D" parent="." index="6"]
+curve = SubResource("Curve2D_uaeil")
+
+[node name="Car" parent="CarPath" index="0" instance=ExtResource("18_bjulg")]
+position = Vector2(922, 801)
+rotation = 0.399827
 
 [connection signal="entered" from="Environment/Gate" to="." method="_on_gate_entered"]
 [connection signal="player_entered" from="Environment/House" to="." method="_on_house_player_entered"]
